@@ -87,28 +87,6 @@ if __name == "main__":
     main()
 
 
-
-
-
-#=========================================================================================================================================
-#Drop a ⭐!
-
-# 🚀 How to Run
-
-#Clone the repository, install the lightweight dependency, and run the script:
-
-#`bash
-#git clone 
-#cd pdf-tabular-extractor
-#pip install pypdf
-
-# Basic usage
-#python pdf_extractor.py sample.pdf -o result.json
-
-
-#Encoding error fix:  [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-#python pdf_extractor.py sample.pdf -o result.json
-
 #=================================================================================================#=======================================
 ### 🛠 Need Custom Features, Scaling, or Priority Support?
 #Building a production system or need this tuned for your specific infrastructure? 
