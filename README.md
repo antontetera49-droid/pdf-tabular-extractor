@@ -8,4 +8,11 @@ Building a production system or need this tuned for your specific infrastructure
 
 What is this? This is: lightweight Python CLI to extract text and tables from messy PDFs into clean JSON/CSV in seconds. No heavy C++ dependencies, no bloat—just raw async speed.
 
+## 🚀 How to Run
+
+
+git clone 
+cd pdf-tabular-extractor && pip install pypdf
+python pdf_extractor.py sample.pdf -o result.json
+
 Saved you some dev hours? Drop a ⭐ to help the project grow!
