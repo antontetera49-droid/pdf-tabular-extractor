@@ -1,0 +1,119 @@
+
+
+#Drop a ⭐!
+
+# 🚀 How to Run
+
+#Clone the repository, install the lightweight dependency, and run the script:
+
+#`bash
+#git clone 
+#cd pdf-tabular-extractor
+#pip install pypdf
+
+# Basic usage
+#python pdf_extractor.py sample.pdf -o result.json
+
+
+#Encoding error fix:  [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+#python pdf_extractor.py sample.pdf -o result.json
+
+
+#=================================================================================================#=======================================
+### 🛠 Need Custom Features, Scaling, or Priority Support?
+#Building a production system or need this tuned for your specific infrastructure? 
+
+#* ⚡️ Custom Integration & Anti-Bot Bypass
+#* 🚀 Dedicated Infrastructure Setup
+#* 💬 Direct Dev Support: [@Myhamed91](https://t.me/Myhamed91)
+#=================================================================================================#=======================================
+
+
+
+
+#pdf-tabular-extractor: Lightweight CLI tool to extract tabular data 
+
+import sys
+import json
+import csv
+import argparse
+from pathlib import Path
+
+try:
+    from pypdf import PdfReader
+except ImportError:
+    print("Error: 'pypdf' package is missing. Install it via: pip install pypdf", file=sys.stderr)
+    sys.exit(1)
+
+# Ensure UTF-8 output for Windows terminals / PowerShell
+if sys.platform == "win32":
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+def extract_text_from_pdf(pdf_path: str) -> list[dict]:
+    """Reads PDF file and returns a list of text lines per page."""
+    path = Path(pdf_path)
+    if not path.exists():
+        print(f"[-] Error: File '{pdf_path}' not found.", file=sys.stderr)
+        sys.exit(1)
+        
+    reader = PdfReader(str(path))
+    extracted_data = []
+    
+    print(f"[*] Processing '{path.name}' ({len(reader.pages)} pages)...")
+    for index, page in enumerate(reader.pages):
+        text = page.extract_text()
+        if text:
+            extracted_data.append({"page": index + 1, "content": text})
+            
+    return extracted_data
+
+def save_to_json(data: list, output_path: str):
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+    print(f"[+] Successfully exported to JSON: {output_path}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Lightweight PDF text & table extractor.")
+    parser.add_argument("pdf", help="Path to the target PDF file")
+    parser.add_argument("-o", "--output", default="output.json", help="Output JSON file path")
+    
+    args = parser.parse_args()
+    
+    data = extract_text_from_pdf(args.pdf)
+    save_to_json(data, args.output)
+
+if __name == "main__":
+    main()
+
+
+
+
+
+#=========================================================================================================================================
+#Drop a ⭐!
+
+# 🚀 How to Run
+
+#Clone the repository, install the lightweight dependency, and run the script:
+
+#`bash
+#git clone 
+#cd pdf-tabular-extractor
+#pip install pypdf
+
+# Basic usage
+#python pdf_extractor.py sample.pdf -o result.json
+
+
+#Encoding error fix:  [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+#python pdf_extractor.py sample.pdf -o result.json
+
+#=================================================================================================#=======================================
+### 🛠 Need Custom Features, Scaling, or Priority Support?
+#Building a production system or need this tuned for your specific infrastructure? 
+
+#* ⚡️ Custom Integration & Anti-Bot Bypass
+#* 🚀 Dedicated Infrastructure Setup
+#* 💬 Direct Dev Support: [@Myhamed91](https://t.me/Myhamed91)
+#=================================================================================================#=======================================
